@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="menu" onClick="toggleNav()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="navigation">
+        <ul>
+            <li class="nav-item"><a href="index.html">HOME</a></li>
+            <li class="nav-item"><a href="format.html">FORMAT</a></li>
+            <li class="nav-item"><a href="/">RESULTS</a></li>
+            <li class="nav-item"><a href="/">TABLES</a></li>
+            <li class="nav-item"><a href="/">BLOG</a></li>
+        </ul>
+    </nav>
     <header>
         <div class="plane"></div>
         <div class="headers">
@@ -50,7 +62,7 @@
             <div class="wrapper">
                 <div class="table">
                     <div class="icon"><i class="fas fa-trophy"></i></div>
-                    <h4>Tables</h4>
+                    <h4>Table</h4>
                 </div>
                 <div class="fixture-list">
                     <div class="icon"><i class="fas fa-clipboard-list"></i></div>
@@ -59,6 +71,13 @@
             </div>
         </section>
     </main>
-    <footer></footer>    
+    <footer></footer> 
+    <script>
+        function toggleNav(){
+            console.log("wotk");
+            let item = document.querySelector("#navigation");
+            item.classList.toggle("show");
+        }
+    </script>   
 </body>
 </html>

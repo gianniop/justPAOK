@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy - Just PAOK Head to Head Championship</title>
+    <script src="https://kit.fontawesome.com/2192cf5f6d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="menu" onClick="toggleNav()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="navigation">
+        <ul>
+            <li class="nav-item"><a href="index.html">HOME</a></li>
+            <li class="nav-item">FORMAT</li>
+            <li class="nav-item">RESULTS</li>
+            <li class="nav-item">TABLES</li>
+            <li class="nav-item">BLOG</li>
+        </ul>
+    </nav>
+    <header class="sec-header">
+        <div class="plane"></div>
+        <div class="headers">
+
+            <h1>MONO ΠΑΟΚ</h1>
+            <h2>Next Level Fantasy Competition</h2>    
+        </div>
+        
+    </header>
+    <main>
+        <section class="format">
+            <h3>Η ΔΙΟΡΓΑΝΩΣΗ</h3>
+            
+            <h4>Α ΦΑΣΗ</h4>
+
+            <p>
+                Στην πρώτη φάση θα γίνουν οι αγώνες κατάταξης. Οι ομάδες θα παίξουν τέσσερις αγώνες και με βάση την τελική βαθμολογία θα προκύψουν οι δύο όμιλοι της επόμενης φάσης.
+            </p>
+
+            <h4>Β ΦΑΣΗ - ΟΜΙΛΟΙ</h4>
+
+            <p>
+                Στη δεύτερη φάση οι ομάδες θα χωριστούν σε δύο ομίλους των πέντε ομάδων, με βάση τη βαθμολογία της πρώτης φάσης.
+                Στον πρώτο όμιλο θα συμμετέχουν όσοι τερμάτισαν σε μονή θέση (1ος, 3ος κτλ) και στο δεύτερο οι υπόλοιποι (2ος, 4ος κτλ). Η φάση θα διαρκέσει πέντε αγωνιστικές, κάθε ομάδα θα παίξει τέσσερα παιχνίδια (και θα έχει ένα ρεπό, στο οποίο θα παίξει φιλικό με την αντίστοιχη ομάδα του άλλου ομίλου).
+            </p>
+
+            <h4>ΤΕΛΙΚΗ ΦΑΣΗ</h4>
+
+            <p>
+                Κατά την τελική φάση οι ομάδες θα παίξουν αγώνες κατάταξης με βάση την τελική τους θέση στον γύρο των ομίλων. 
+                <br/> 
+                Τα ζευγάρια θα είναι τα ακόλουθα 
+            </p>
+            <h5>Θέσεις 1-4</h5>
+            <p>
+                1os A oμίλου - 2ος Β ομίλου <br/>
+                2os A oμίλου - 1ος Β ομίλου <br/>
+            </p>
+            <h5>Θέσεις 5-8</h5>
+            <p>
+                3os A oμίλου - 4ος Β ομίλου <br/>
+                4os A oμίλου - 3ος Β ομίλου <br/>
+            </p>
+            <h5>Θέσεις 9-10</h5>
+            <p>
+                5os A oμίλου - 5ος Β ομίλου
+            </p>
+
+            <h4>ΤΡΟΠΟΣ ΒΑΘΜΟΛΟΓΙΑΣ</h4>
+           
+           <p>
+               Οι ομάδες βαθμολογούνται με βάση την επίδοσή της fantasy ομάδας τους κάθε αηωνιστική. Αν μία ομάδα συγκεντρώσει περίσσοτερους βαθμούς από τον αντίπαλο, κερδίζει 3 βαθμούς, ή προκρίνεται στον επόμενο αγώνα, αν πρόκειται για νοκ άουτ. Αν οι δύο ομάδες έχουν το ίδιο σκορ θα πάρει η κάθε μία από έναν βαθμό. Σε περίπτωση ισοβαθμίας σε νοκ άουτ αγώνα θα προκρίνεται εκείνη η ομάδα που έχει τήν καλύτερη διαφορά τερμάτων, μέχρι τους αγώνες των ομίλων (Α Φάση + Β Φάση).
+           </p>
+
+        </section>
+        <section class="options">
+            <div class="wrapper">
+                <div class="table">
+                    <div class="icon"><i class="fas fa-trophy"></i></div>
+                    <h4>Table</h4>
+                </div>
+                <div class="fixture-list">
+                    <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h4>Fixtures</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer> 
+    <script>
+        function toggleNav(){
+            console.log("wotk");
+            let item = document.querySelector("#navigation");
+            item.classList.toggle("show");
+        }
+    </script>   
+</body>
+</html>

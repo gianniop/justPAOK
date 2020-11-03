@@ -10,12 +10,54 @@ img{
 
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 body{
     font-family: 'Roboto', sans-serif;
 }
 
+#menu{
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	right: 1.5rem;
+	top: 1.5rem;
+	background-color: rgba(66, 77, 156, 0.25);
+	color: #fff;
+	border-radius: 50%;
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+	font-size: 1.5rem;
+}
+#navigation{
+	width: 100vw;
+	height: 100vh;
+	background: #136F63;
+	position: fixed;
+	top: -150vh;
+	left: 0;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	z-index: 5; 
+	transition: top 0.5s;
+}
+#navigation.show{
+	top: 0;
+}
+#navigation ul{
+	color: #fff;
+	list-style: none;
+	text-align : center;
+}
+#navigation ul li.nav-item{
+	font-size: 2rem;
+	font-weight: 300;
+	padding: 1rem 0;
+}
 header{
 	background: url(bg2.jpg);
 	width: 100%;
@@ -25,6 +67,10 @@ header{
 	text-align: center;
 	color: #fff;
 	position: relative;
+}
+
+header.sec-header{
+	height: 30vh;
 }
 
 header .plane{
@@ -124,4 +170,23 @@ section.options{
 .options .wrapper div h4{
 	font-size: 22px;
 	font-weight: 100;
+}
+
+.format{
+	max-width: 400px;
+	width: 90%;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+.format h3,h4,h5{
+	font-weight: 300;
+	margin: 1rem 0;
+}
+
+.format h3{
+	font-size: 26px;
+}
+
+.format h4{
+	font-size: 20px;
 }
