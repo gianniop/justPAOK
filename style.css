@@ -58,6 +58,13 @@ body{
 	font-weight: 300;
 	padding: 1rem 0;
 }
+
+.center{
+	width: 90%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
 header{
 	background: url(bg2.jpg);
 	width: 100%;
@@ -112,9 +119,7 @@ section.gameDay{
 }
 
 .fixtures{
-	max-width: 400px;
-	width: 90%;
-    margin: 0 auto 50px;
+    margin-bottom:50px;
 }
 
 .fixtures ul li.game{
@@ -141,18 +146,23 @@ section.options{
 	color: #fff;
 }
 
+
+
 .options .wrapper{
 	padding: 50px 0 100px;
-	width: 90%;
-	max-width: 400px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	margin: 0 auto;
 }
 
 .options .wrapper div{
 	width: 30%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.options .wrapper div a{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -173,9 +183,6 @@ section.options{
 }
 
 .format{
-	max-width: 400px;
-	width: 90%;
-	margin: 0 auto;
 	padding: 2rem 0;
 }
 .format h3,h4,h5{
@@ -189,4 +196,82 @@ section.options{
 
 .format h4{
 	font-size: 20px;
+}
+
+.format p{
+	padding: 0.5rem 0;
+}
+
+.format p span{
+	width: 7ch;
+	padding: 0 0.5rem;
+}
+
+.team{
+	display: flex;
+	padding: 0.5rem;
+	font-weight: 300;
+	font-size: 18px;
+}
+.team .rank{
+	width: 4ch;
+}
+
+.team .goals{
+	margin-right: auto;
+	width: 5ch;
+	text-align: right;
+}
+.team .name{
+	flex-grow: 2;
+}
+
+.league-table{
+	margin-bottom: 1rem;
+}
+
+.tables h2, .tables h4{
+	text-align: center;
+	font-weight: 300;
+}
+
+.tables h2{
+	padding: 1rem 0;
+	font-size: 26px;
+}
+
+.tables h4{
+	padding-bottom: 1rem;
+	font-size: 20px;
+	width: 200px;
+	margin: 0 auto 1rem;
+	border-bottom: 1px solid;
+}
+
+.team:nth-of-type(odd){
+	background-color: #69995D;
+	color: #fff;
+}
+
+.memo{
+	width: 200px;
+	border-top:1px solid;
+	padding: 1rem;
+	margin: 0 auto;
+	margin-bottom: 2rem;
+}
+
+.memo-info{
+	display: flex;
+	height: 1.5rem;
+	align-items: center;
+	justify-content: space-around;
+}
+.memo-info .box{
+	width: 1rem;
+	height: 1rem;
+	border:1px solid;
+}
+.memo-info:first-of-type .box{
+	background-color: #69995D;
 }
