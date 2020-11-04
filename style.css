@@ -107,12 +107,12 @@ header h2{
 	font-weight: 300;
 }
 
-section.gameDay{
+section.gameDay, .weekDay{
 	text-align: center;
 	color: #000;
 }
 
-.gameDay h3{
+.gameDay h3, .weekDay h3{
 	font-weight: 300;
 	font-size: 22px;
 	padding: 2em 0;
@@ -274,4 +274,10 @@ section.options{
 }
 .memo-info:first-of-type .box{
 	background-color: #69995D;
+}
+
+.weekDay.active{
+	background-color: #69995D;
+	color: #fff;
+	padding: 2rem 0;
 }
