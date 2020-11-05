@@ -228,6 +228,8 @@ section.options{
 
 .league-table{
 	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .tables h2, .tables h4{
@@ -248,10 +250,12 @@ section.options{
 	border-bottom: 1px solid;
 }
 
+/*
 .team:nth-of-type(odd){
 	background-color: #69995D;
 	color: #fff;
 }
+*/
 
 .memo{
 	width: 200px;
@@ -280,4 +284,44 @@ section.options{
 	background-color: #69995D;
 	color: #fff;
 	padding: 2rem 0;
+}
+.lt-1{
+	order:1;
+	background-color: #69995D;
+	color: #fff;
+}
+.lt-2{
+	order:2;
+}
+.lt-3{
+	order:3;
+	background-color: #69995D;
+	color: #fff;
+}
+.lt-4{
+	order:4;
+}
+.lt-5{
+	order:5;
+	background-color: #69995D;
+	color: #fff;
+}
+.lt-6{
+	order:6;
+}
+.lt-7{
+	order:7;
+	background-color: #69995D;
+	color: #fff;
+}
+.lt-8{
+	order:8;
+}
+.lt-9{
+	order:9;
+	background-color: #69995D;
+	color: #fff;
+}
+.lt-10{
+	order:10;
 }
