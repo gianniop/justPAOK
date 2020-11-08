@@ -129,16 +129,36 @@ section.gameDay, .weekDay{
     border-bottom: none;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 0.5em;
+    padding:0.5em;
     font-weight: 300;
+
+    text-align: left;
+
+    font-size: 22px;
 }
 
 .fixtures ul li.game:last-of-type{
 	border-bottom: 1px solid;
 }
 
-.fixtures ul li.game .score{
-	font-size: 24px;
+.fixtures ul li.game .teams, .fixtures ul li.game .score{
+	display: flex;
+	flex-direction: column;
+	height: 60px;
+	justify-content: space-between;
+}
+
+.fixtures ul li.game .teams .team-info{
+	
+}
+
+.fixtures ul li.game .teams .team-info i{
+	margin-right: 0.25em;
+	background-color: #FF8552;
+	color: #fff;
+	padding: 3px;
+	width: 35px;
+	text-align: center;
 }
 
 section.options{
