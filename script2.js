@@ -140,8 +140,8 @@ class League{
 }
 
 class SplitLeague extends League{
-    constructor(startDay, numOfGames){
-        super(startDay, numOfGames);
+    constructor(startDay, numOfGames, name){
+        super(startDay, numOfGames, name);
         this.table = {A : [],  B : []};
     }
     
@@ -276,6 +276,106 @@ class SplitLeague extends League{
     }
 }
 
+class Cup {
+    constructor(knockout, name){
+        this.teams = [];
+        this.gameday = [];
+        this.name = name;
+        this.knockout = knockout;
+        this.activeDay = -1;
+    }
+
+    addTeams(teams){
+        for(let i = 0; i < teams.length; i++){
+            this.teams.push(teams[i]);
+        }
+    }
+
+    addGameDay(day, games){
+        let gd = { day : -1, matches : []};
+        gd.day = day;
+        gd.matches.push(games);
+        this.gameday.push(gd);
+    }
+
+    start(day){
+        this.activeDay = day;
+    }
+
+    increaseDay(){
+        this.activeDay++;
+    }
+
+    displaySchedule(){
+
+
+        let element = `
+        <div class="weekDay">
+            <div class="fixtures center">
+                <ul>
+        `;
+
+        for(let i = 0; i < this.gameday.length; i++){
+            let day = this.gameday[i].day;
+            for(let j = 0; j < this.gameday[i].matches.length; j++){
+                //console.log(this.gameday[i].matches[j]);   
+                this.gameday[i].matches[j].forEach(game => {
+                    //console.log(this.teams[game[0]].name + ' - ' + this.teams[game[1]].name);
+                    element += `<li class="game">
+                    <div class="teams">
+                        <div class="team-info">${this.teams[game[0]].name}</div>
+                        <div class="team-info">${this.teams[game[1]].name}</div>
+                    </div>`;
+                    
+                        element += `
+                            <div class="score">
+                                <div>${(day <= this.activeDay) ? this.teams[game[0]].scores[day] : 0 }</div>
+                                <div>${(day <= this.activeDay) ? this.teams[game[1]].scores[day] : 0 }</div>
+                            </div>
+                        `;
+                        //console.log(this.teams[game[0]].scores[day] + ' - ' + this.teams[game[1]].scores[day]);    
+                    
+                    if(!this.knockout && this.activeDay >= (day + 1)){
+                        element += `
+                            <div class="score">
+                                <div>${this.teams[game[0]].scores[day + 1]}</div>
+                                <div>${this.teams[game[1]].scores[day + 1]}</div>
+                            </div>
+                            <div class="score">
+                                <div>${this.teams[game[0]].scores[day] + this.teams[game[0]].scores[day + 1]}</div>
+                                <div>${this.teams[game[1]].scores[day] + this.teams[game[1]].scores[day + 1]}</div>
+                            </div>
+                        `;
+                        //console.log(this.teams[game[0]].scores[day + 1] + ' - ' + this.teams[game[1]].scores[day + 1]);  
+                        //console.log((this.teams[game[0]].scores[day] + this.teams[game[0]].scores[day + 1]) + ' - ' + (this.teams[game[1]].scores[day] + this.teams[game[1]].scores[day + 1]));  
+                    }
+                    element += `</li>`;
+                })
+            }
+        }
+
+        /*
+        for(let i = 0; i < this.gameday[day].length; i++){
+            element += `
+                <li class="game">
+                    <div class="teams">
+                        <div class="team-info">${this.teams[this.gameday[day][i][0]].name}</div>
+                        <div class="team-info">${this.teams[this.gameday[day][i][1]].name}</div>
+                    </div>
+                    <div class="score">
+                        <div>${(day <= this.activeDay) ? this.teams[this.gameday[day][i][0]].scores[day + this.startDay] : 0 }</div>
+                        <div>${(day <= this.activeDay) ? this.teams[this.gameday[day][i][1]].scores[day + this.startDay] : 0 }</div>
+                    </div>
+                </li>` ;   
+        }
+        */
+
+        element += "</ul></div></div>";
+
+        $("section."+this.name+"").append(element);
+    }
+}
+
 let pet     = new Team(0, "Petoria Rotters");
 let seven   = new Team(1, "Eptahori FC");
 let bobo    = new Team(2, "Superbobo");
@@ -401,5 +501,20 @@ seasonOne.schedule[1].displayTable();
 seasonOne.schedule[1].displayTableSort()
 
 
+console.log("CUP");
+
+let cup = new Cup(false, "CUP");
+cup.addTeams(seasonOneTeams);
+cup.addGameDay(0, [[6, 0], [5, 8]]);
+//cup.start(0);
+//cup.increaseDay();
+//cup.displaySchedule();
 
 
+console.log("LEAGUE CUP");
+
+let lCup = new Cup(true, "League-CUP");
+lCup.addTeams(seasonOneTeams);
+lCup.addGameDay(0, [[0, 6], [8, 4]]);
+
+//lCup.displaySchedule();

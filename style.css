@@ -118,6 +118,11 @@ section.gameDay, .weekDay{
 	padding: 2em 0;
 }
 
+h2.cup-title{
+	text-align: center;
+	margin:2rem 0;
+}
+
 .fixtures{
     margin-bottom:50px;
 }
@@ -173,6 +178,7 @@ section.options{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .options .wrapper div{
