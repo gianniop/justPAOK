@@ -26,12 +26,13 @@ class Season{
     }
 }
 class League{
-    constructor(startDay, numOfGames){
+    constructor(startDay, numOfGames, name){
         this.teams = [];
         this.startDay = startDay;
         this.table = [];
         this.gameday = [];
         this.activeDay = -1;
+        this.name = name;
     }
     addTeams(teams){
         for(let i = 0; i < teams.length; i++){
@@ -127,6 +128,15 @@ class League{
     activeDayIncrease(){
         this.activeDay++;
     }
+    getTeamFromTable(id, returnType){
+        let rank = [...this.table];
+        rank.sort(function (a, b) { 
+            return (b.points != a.points ? b.points - a.points : b.goals - a.goals)});
+        //console.log(rank[id]);
+        //console.log(this.teams[rank[id].id]);
+        if (returnType == "teamId") return this.teams[rank[id].id];
+        if (returnType == "points") return rank[id];
+    }
 }
 
 class SplitLeague extends League{
@@ -154,6 +164,19 @@ class SplitLeague extends League{
             //this.table.push([0,0]);    
             this.table.A.push({ points : 0, goals : 0, id:i});    
             this.table.B.push({ points : 0, goals : 0, id:i+5});    
+        }
+    }
+
+    setTable(index, data){
+        if(index < 5){
+            this.table.A[index].points = data.points;     
+            this.table.A[index].goals = data.goals;
+            //this.table.A[index].id = data.id;         
+        }else{
+            this.table.B[index % 5].points = data.points;     
+            this.table.B[index % 5].goals = data.goals; 
+            //this.table.B[index % 5].id = data.id;         
+
         }
     }
     
@@ -231,7 +254,10 @@ class SplitLeague extends League{
                 return (b.points != a.points ? b.points - a.points : b.goals - a.goals)});    
             //console.log(rank);
         
-            let element = '<div class="league-table prel center">';
+            console.log("display table sort");
+            console.log(rank);
+
+            let element = '<div class="league-table split-league center">';
             for(let i = 0;i < rank.length;i++){
                 element += `
                     <div class="team lt-${(i+1)}">
@@ -264,19 +290,21 @@ let mar     = new Team(9, "Alkoolikos Asteras");
 const seasonOneTeams = [pet, seven, bobo, pali, ro, men, sid, tosk, tsak, mar];
 let seasonOne = new Season(seasonOneTeams);
 
-let prelimRound = new League(0, 4);
+let prelimRound = new League(0, 4, "Round A");
 seasonOne.addPhase(prelimRound);
 
 seasonOne.addScores([55, 63, 56, 81, 61, 69, 55, 75, 56, 70]);
 seasonOne.addScores([75, 58, 66, 84, 77, 58, 76, 71, 50, 66]);
 seasonOne.addScores([57, 65, 45, 62, 65, 52, 40, 75, 30, 53]);
 seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
+//seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
+//seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
 
 
 seasonOne.schedule[0].addTeams(seasonOne.teams);
 seasonOne.schedule[0].initTable();
 /*
-let splitRound = new SplitLeague(0, 4);
+let splitRound = new SplitLeague(4, 9);
 seasonOne.addPhase(splitRound);
 
 
@@ -298,7 +326,7 @@ seasonOne.schedule[0].activeDayIncrease();
 
 seasonOne.schedule[0].tableCalculate();
 seasonOne.schedule[0].displayTable();
-//seasonOne.schedule[0].displayTableSort();
+seasonOne.schedule[0].displayTableSort();
 
 */
 
@@ -313,5 +341,65 @@ seasonOne.schedule[0].activeDayIncrease();
 seasonOne.schedule[0].activeDayIncrease();
 
 seasonOne.schedule[0].tableCalculate();
+seasonOne.schedule[0].displayTable();
+
+
+console.log("Round Two");
+
+let splitRound = new SplitLeague(4, 9, "Round B");
+seasonOne.addPhase(splitRound);
+
+
+const roundTwoTeams = [];
+for(let i = 0; i < 10; i+=2){
+    roundTwoTeams.push(seasonOne.schedule[0].getTeamFromTable(i, "teamId"));
+}
+for(let i = 1; i < 10; i+=2){
+    roundTwoTeams.push(seasonOne.schedule[0].getTeamFromTable(i, "teamId"));
+}
+
+
+console.log(roundTwoTeams);
+seasonOne.schedule[1].addTeams(roundTwoTeams);
+
+seasonOne.schedule[1].initTable();
+
+let index = 0;
+for(let i = 0; i < 10; i+=2){
+    const data  = seasonOne.schedule[0].getTeamFromTable(i, "points");
+    seasonOne.schedule[1].setTable(index, data);
+    index++;
+}
+console.log(index);
+for(let i = 1; i < 10; i+=2){
+    const data  = seasonOne.schedule[0].getTeamFromTable(i, "points");
+    seasonOne.schedule[1].setTable(index, data);
+    index++;
+}
+
+seasonOne.schedule[1].displayTable();
+
+
+seasonOne.schedule[1].addGameDay([[0, 1], [2, 3], [4]]);
+seasonOne.schedule[1].addGameDay([[0, 2], [1, 4], [3]]);
+seasonOne.schedule[1].addGameDay([[0, 4], [1, 3], [2]]);
+seasonOne.schedule[1].addGameDay([[0, 3], [2, 4], [1]]);
+seasonOne.schedule[1].addGameDay([[1, 2], [3, 4], [0]]);
+
+
+
+
+//seasonOne.schedule[1].activeDayIncrease();
+//seasonOne.schedule[1].activeDayIncrease();
+
+seasonOne.schedule[1].displaySchedule();
+
+
+seasonOne.schedule[1].tableCalculate();
+seasonOne.schedule[1].displayTable();
+
+seasonOne.schedule[1].displayTableSort()
+
+
 
 
