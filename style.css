@@ -139,7 +139,7 @@ h2.cup-title{
 
     text-align: left;
 
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .fixtures ul li.game:last-of-type{
@@ -149,8 +149,16 @@ h2.cup-title{
 .fixtures ul li.game .teams, .fixtures ul li.game .score{
 	display: flex;
 	flex-direction: column;
-	height: 60px;
-	justify-content: space-between;
+	height: 40px;
+	justify-content: flex-end;
+}
+
+.fixtures ul li.game .teams{
+	margin-right: auto;
+}
+
+.fixtures ul li.game .score{
+	margin-left: 8px;
 }
 
 .fixtures ul li.game .teams .team-info{
@@ -182,7 +190,7 @@ section.options{
 }
 
 .options .wrapper div{
-	width: 30%;
+	width: 40%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
