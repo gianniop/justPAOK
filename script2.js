@@ -279,6 +279,7 @@ class SplitLeague extends League{
 class Cup {
     constructor(knockout, name){
         this.teams = [];
+        this.activeTeams = [];
         this.gameday = [];
         this.name = name;
         this.knockout = knockout;
@@ -289,6 +290,29 @@ class Cup {
         for(let i = 0; i < teams.length; i++){
             this.teams.push(teams[i]);
         }
+        this.initActiveTeams();
+    }
+
+    initActiveTeams(){
+        this.teams.forEach((team, index) => {
+            this.activeTeams[index] = true;
+        });
+    }
+
+    getActiveTeams(){
+        let count = 0;
+        this.activeTeams.forEach(team => {
+            if (team) count++;
+        });
+        console.log("Teams : "+ count);
+        return count;
+    }
+
+    getRound(){
+        if (this.getActiveTeams() > 8) return "Qualifying Round";
+        if (this.getActiveTeams() == 8) return "Quarter Finals";
+        if (this.getActiveTeams() == 4) return "Semi Finals";
+        if (this.getActiveTeams() == 2) return "Final";
     }
 
     addGameDay(day, games){
@@ -309,33 +333,45 @@ class Cup {
     displaySchedule(){
 
 
-        let element = `
-        <div class="weekDay">
-            <div class="fixtures center">
-                <ul>
-        `;
+        let element = ""; 
 
         for(let i = 0; i < this.gameday.length; i++){
             let day = this.gameday[i].day;
+            element += `
+            <div class="weekDay">
+                <h3>${this.getRound()}</h3>
+                <div class="fixtures center">
+                    <ul>
+            `;
             for(let j = 0; j < this.gameday[i].matches.length; j++){
                 //console.log(this.gameday[i].matches[j]);   
                 this.gameday[i].matches[j].forEach(game => {
                     //console.log(this.teams[game[0]].name + ' - ' + this.teams[game[1]].name);
-                    element += `<li class="game">
+                    element += `
+                    
+                    <li class="game">
                     <div class="teams">
                         <div class="team-info">${this.teams[game[0]].name}</div>
                         <div class="team-info">${this.teams[game[1]].name}</div>
                     </div>`;
                     
-                        element += `
-                            <div class="score">
-                                <div>${(day <= this.activeDay) ? this.teams[game[0]].scores[day] : 0 }</div>
-                                <div>${(day <= this.activeDay) ? this.teams[game[1]].scores[day] : 0 }</div>
-                            </div>
+                    element += `
+                        <div class="score">
+                            <div>${(day <= this.activeDay) ? this.teams[game[0]].scores[day] : 0 }</div>
+                            <div>${(day <= this.activeDay) ? this.teams[game[1]].scores[day] : 0 }</div>
+                        </div>
                         `;
                         //console.log(this.teams[game[0]].scores[day] + ' - ' + this.teams[game[1]].scores[day]);    
-                    
-                    if(!this.knockout && this.activeDay >= (day + 1)){
+                    if(this.knockout && day <= this.activeDay){
+                        if(this.teams[game[0]].scores[day] > this.teams[game[1]].scores[day]){
+                            this.activeTeams[this.teams[game[1]]] = false;
+                        }else{
+                            this.activeTeams[this.teams[game[0]]] = false;    
+                        }
+                        this.getActiveTeams();
+                    }
+                    //console.log(this.activeDay + " / " + day);
+                    if(!this.knockout && this.activeDay <= (day + 1)){
                         element += `
                             <div class="score">
                                 <div>${this.teams[game[0]].scores[day + 1]}</div>
@@ -348,6 +384,17 @@ class Cup {
                         `;
                         //console.log(this.teams[game[0]].scores[day + 1] + ' - ' + this.teams[game[1]].scores[day + 1]);  
                         //console.log((this.teams[game[0]].scores[day] + this.teams[game[0]].scores[day + 1]) + ' - ' + (this.teams[game[1]].scores[day] + this.teams[game[1]].scores[day + 1]));  
+                        if(this.teams[game[0]].scores[day] + this.teams[game[0]].scores[day + 1] > this.teams[game[1]].scores[day] + this.teams[game[1]].scores[day + 1]){
+                            this.activeTeams[this.teams[game[1]].id] = false;
+                            //console.log("home qualified");
+                            //console.log(this.teams[game[1]]);
+                        }else{
+                            this.activeTeams[this.teams[game[0]].id] = false;  
+                            //console.log("away qualified");
+                            //console.log(this.teams[game[0]]);
+
+                        }
+                        this.getActiveTeams();
                     }
                     element += `</li>`;
                 })
@@ -397,7 +444,7 @@ seasonOne.addScores([55, 63, 56, 81, 61, 69, 55, 75, 56, 70]);
 seasonOne.addScores([75, 58, 66, 84, 77, 58, 76, 71, 50, 66]);
 seasonOne.addScores([57, 65, 45, 62, 65, 52, 40, 75, 30, 53]);
 seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
-//seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
+seasonOne.addScores([39, 20, 22, 21, 16, 12, 27, 36, 23, 38]);
 //seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
 
 
@@ -459,7 +506,7 @@ for(let i = 1; i < 10; i+=2){
 }
 
 
-console.log(roundTwoTeams);
+//console.log(roundTwoTeams);
 seasonOne.schedule[1].addTeams(roundTwoTeams);
 
 seasonOne.schedule[1].initTable();
@@ -477,7 +524,7 @@ for(let i = 1; i < 10; i+=2){
     index++;
 }
 
-seasonOne.schedule[1].displayTable();
+//seasonOne.schedule[1].displayTable();
 
 
 seasonOne.schedule[1].addGameDay([[0, 1], [2, 3], [4]]);
@@ -489,7 +536,7 @@ seasonOne.schedule[1].addGameDay([[1, 2], [3, 4], [0]]);
 
 
 
-//seasonOne.schedule[1].activeDayIncrease();
+seasonOne.schedule[1].activeDayIncrease();
 //seasonOne.schedule[1].activeDayIncrease();
 
 seasonOne.schedule[1].displaySchedule();
@@ -505,9 +552,13 @@ console.log("CUP");
 
 let cup = new Cup(false, "CUP");
 cup.addTeams(seasonOneTeams);
-cup.addGameDay(0, [[6, 0], [5, 8]]);
-//cup.start(0);
+cup.addGameDay(4, [[6, 0], [5, 8]]);
+//cup.addGameDay(2, [[1, 6], [5, 4], [2, 3], [7,9]]);
+
+cup.start(4);
+cup.increaseDay();
 //cup.increaseDay();
+//cup.getActiveTeams();
 //cup.displaySchedule();
 
 
@@ -515,6 +566,9 @@ console.log("LEAGUE CUP");
 
 let lCup = new Cup(true, "League-CUP");
 lCup.addTeams(seasonOneTeams);
-lCup.addGameDay(0, [[0, 6], [8, 4]]);
+lCup.addGameDay(4, [[0, 6], [8, 4]]);
+lCup.start(4);
+lCup.increaseDay();
+//lCup.getActiveTeams();
 
 //lCup.displaySchedule();
