@@ -444,7 +444,8 @@ seasonOne.addScores([55, 63, 56, 81, 61, 69, 55, 75, 56, 70]);
 seasonOne.addScores([75, 58, 66, 84, 77, 58, 76, 71, 50, 66]);
 seasonOne.addScores([57, 65, 45, 62, 65, 52, 40, 75, 30, 53]);
 seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
-seasonOne.addScores([39, 20, 22, 21, 16, 12, 27, 36, 23, 38]);
+/* knock start */
+seasonOne.addScores([51, 36, 38, 39, 37, 39, 42, 48, 31, 46]);
 //seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
 
 
