@@ -226,14 +226,23 @@ class SplitLeague extends League{
                     }
                 }else{
                     
-                    if(this.gameday[i][match][0] < 5){
+                    if(this.gameday[i][match][0] < 5 && this.gameday[i][match][1] < 5){
                         //console.log("draw - gr A");
                         this.table.A[this.gameday[i][match][0]].points += 1;
                         this.table.A[this.gameday[i][match][1]].points += 1;
-                    }else{
+                    }else if(this.gameday[i][match][0] > 4 && this.gameday[i][match][1] > 4){
                         //console.log("draw - gr B");
                         this.table.B[(this.gameday[i][match][0]-5)].points += 1;
                         this.table.B[(this.gameday[i][match][1]-5)].points += 1;
+                    }else{
+                        console.log("draw - mix game");
+                        if(this.gameday[i][match][0] < 5){
+                            this.table.A[this.gameday[i][match][0]].points += 1;
+                            this.table.B[this.gameday[i][match][1]-5].points += 1;
+                        }else{
+                            this.table.A[this.gameday[i][match][1]].points += 1;
+                            this.table.B[this.gameday[i][match][0]-5].points += 1;     
+                        }
                     }
                 }   
             }
@@ -446,7 +455,7 @@ seasonOne.addScores([57, 65, 45, 62, 65, 52, 40, 75, 30, 53]);
 seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
 /* knock start */
 seasonOne.addScores([66, 40, 51, 47, 50, 49, 56, 69, 51, 52]);
-//seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
+seasonOne.addScores([54, 26, 43, 54, 48, 28, 27, 48, 54, 57]);
 
 
 seasonOne.schedule[0].addTeams(seasonOne.teams);
@@ -538,7 +547,7 @@ seasonOne.schedule[1].addGameDay([[1, 2], [3, 4], [0]]);
 
 
 seasonOne.schedule[1].activeDayIncrease();
-//seasonOne.schedule[1].activeDayIncrease();
+seasonOne.schedule[1].activeDayIncrease();
 
 seasonOne.schedule[1].displaySchedule();
 
