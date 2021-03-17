@@ -455,7 +455,7 @@ seasonOne.addScores([57, 65, 45, 62, 65, 52, 40, 75, 30, 53]);
 seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
 /* knock start */
 seasonOne.addScores([66, 40, 51, 47, 50, 49, 56, 69, 51, 52]);
-seasonOne.addScores([54, 26, 43, 54, 48, 28, 27, 48, 54, 57]);
+seasonOne.addScores([84, 50, 57, 71, 71, 42, 27, 65, 77, 65]);
 
 
 seasonOne.schedule[0].addTeams(seasonOne.teams);
