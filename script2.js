@@ -558,11 +558,13 @@ seasonOne.schedule[1].displayTable();
 seasonOne.schedule[1].displayTableSort()
 
 
+//const seasonOneTeams = [pet, seven, bobo, pali, ro, men, sid, tosk, tsak, mar];
 console.log("CUP");
 
 let cup = new Cup(false, "CUP");
 cup.addTeams(seasonOneTeams);
 cup.addGameDay(4, [[6, 0], [5, 8]]);
+cup.addGameDay(6, [[2, 4], [7, 9], [0, 8], [1, 3]]);
 //cup.addGameDay(2, [[1, 6], [5, 4], [2, 3], [7,9]]);
 
 cup.start(4);
@@ -577,6 +579,8 @@ console.log("LEAGUE CUP");
 let lCup = new Cup(true, "League-CUP");
 lCup.addTeams(seasonOneTeams);
 lCup.addGameDay(4, [[0, 6], [8, 4]]);
+lCup.addGameDay(6, [[7, 3], [5, 1], [0, 8], [2, 9]]);
+
 lCup.start(4);
 lCup.increaseDay();
 //lCup.getActiveTeams();
