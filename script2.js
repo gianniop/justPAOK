@@ -456,6 +456,9 @@ seasonOne.addScores([90, 71, 79, 59, 71, 58, 49, 41, 65, 79]);
 /* knock start */
 seasonOne.addScores([66, 40, 51, 47, 50, 49, 56, 69, 51, 52]);
 seasonOne.addScores([94, 65, 77, 90, 85, 68, 51, 78, 78, 79]);
+/* quarter finals */
+seasonOne.addScores([35, 37, 41, 20, 45, 4, 20, 37, 38, 38]);
+
 
 
 seasonOne.schedule[0].addTeams(seasonOne.teams);
@@ -548,6 +551,7 @@ seasonOne.schedule[1].addGameDay([[1, 2], [3, 4], [0]]);
 
 seasonOne.schedule[1].activeDayIncrease();
 seasonOne.schedule[1].activeDayIncrease();
+seasonOne.schedule[1].activeDayIncrease();
 
 seasonOne.schedule[1].displaySchedule();
 
@@ -569,6 +573,7 @@ cup.addGameDay(6, [[2, 4], [7, 9], [0, 8], [1, 3]]);
 
 cup.start(4);
 cup.increaseDay();
+cup.increaseDay();
 //cup.increaseDay();
 //cup.getActiveTeams();
 //cup.displaySchedule();
@@ -582,6 +587,7 @@ lCup.addGameDay(4, [[0, 6], [8, 4]]);
 lCup.addGameDay(6, [[7, 3], [5, 1], [0, 8], [2, 9]]);
 
 lCup.start(4);
+lCup.increaseDay();
 lCup.increaseDay();
 //lCup.getActiveTeams();
 
