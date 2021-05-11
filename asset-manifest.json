@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/baccara/static/css/main.f7f7551a.chunk.css",
+    "main.js": "/baccara/static/js/main.73c80d24.chunk.js",
+    "main.js.map": "/baccara/static/js/main.73c80d24.chunk.js.map",
+    "runtime-main.js": "/baccara/static/js/runtime-main.4c4baab7.js",
+    "runtime-main.js.map": "/baccara/static/js/runtime-main.4c4baab7.js.map",
+    "static/js/2.662945f5.chunk.js": "/baccara/static/js/2.662945f5.chunk.js",
+    "static/js/2.662945f5.chunk.js.map": "/baccara/static/js/2.662945f5.chunk.js.map",
+    "static/js/3.039a9a42.chunk.js": "/baccara/static/js/3.039a9a42.chunk.js",
+    "static/js/3.039a9a42.chunk.js.map": "/baccara/static/js/3.039a9a42.chunk.js.map",
+    "index.html": "/baccara/index.html",
+    "static/css/main.f7f7551a.chunk.css.map": "/baccara/static/css/main.f7f7551a.chunk.css.map",
+    "static/js/2.662945f5.chunk.js.LICENSE.txt": "/baccara/static/js/2.662945f5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c4baab7.js",
+    "static/js/2.662945f5.chunk.js",
+    "static/css/main.f7f7551a.chunk.css",
+    "static/js/main.73c80d24.chunk.js"
+  ]
+}
